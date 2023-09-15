@@ -24,8 +24,8 @@ class Point:
 
     def point_drawing(self):
         """
-        function will draw a point in turtle graph
-        :return: point
+        function will draw a point in turtle graph.
+        :return: point based on user input
         """
         t = turtle.Turtle()
         t.penup()
