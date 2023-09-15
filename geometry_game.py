@@ -56,11 +56,11 @@ class Rectangle:
         b = self.coordinate2.y - self.coordinate1.y
         t = turtle.Turtle()
         t.forward(a)  # a = length of first side
-        t.right(90)   # Turn turtle by 90 degree
+        t.left(90)   # Turn turtle by 90 degree
         t.forward(b)  # b length of second side
-        t.right(90)
+        t.left(90)
         t.forward(a)
-        t.right(90)
+        t.left(90)
         t.forward(b)
         return t
 
