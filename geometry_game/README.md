@@ -12,6 +12,8 @@ for this specific project i didnt use any special libraries, just these whose ar
 ## How to use program?:
 program will just ask user for X coordinates of his point. If user will write invalid input(it must be integer)
 he will be prompt back for valid input. Here is showcase how looks invalid input:
+
+
 ![obrazek](https://github.com/Zncrw/OOP_projects/assets/132506987/91639704-0107-478e-a2dc-4347e7d3b44c)
 
 
