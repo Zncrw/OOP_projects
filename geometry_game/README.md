@@ -14,6 +14,7 @@ program will just ask user for X coordinates of his point. If user will write in
 he will be prompt back for valid input. Here is showcase how looks invalid input:
 ![obrazek](https://github.com/Zncrw/OOP_projects/assets/132506987/91639704-0107-478e-a2dc-4347e7d3b44c)
 
+
 After seting right values to program, you will get message if you hit the Rectangle or not with boolean value
 True / False. Then program will show you GUI with your guessed point, and the rectangle object.
 
