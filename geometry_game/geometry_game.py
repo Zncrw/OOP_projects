@@ -52,15 +52,15 @@ class Rectangle:
         function will draw o rectangle based on random generated points
         :return: drawing of rectangle
         """
-        a = self.coordinate1.x - self.coordinate2.x
-        b = self.coordinate1.y - self.coordinate2.y
+        a = self.coordinate2.x - self.coordinate1.x
+        b = self.coordinate2.y - self.coordinate1.y
         t = turtle.Turtle()
         t.forward(a)  # a = length of first side
-        t.right(90)   # Turn turtle by 90 degree
+        t.left(90)   # Turn turtle by 90 degree
         t.forward(b)  # b length of second side
-        t.right(90)
+        t.left(90)
         t.forward(a)
-        t.right(90)
+        t.left(90)
         t.forward(b)
         return t
 
