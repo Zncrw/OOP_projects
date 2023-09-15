@@ -8,9 +8,9 @@ class Point:
 
     def in_rectangle(self, rectangle) -> bool:
         """
-        function checking if point lies in rectangle
-        :param rectangle: random generated rectangle object
-        :return: Bool if guessed point is in rectangle or not
+        function checking if point lies in rectangle.
+        :param rectangle: random generated rectangle object.
+        :return: Bool if guessed point is in rectangle or not.
         """
 
         if (rectangle.coordinate1.x < self.x < rectangle.coordinate2.x and
