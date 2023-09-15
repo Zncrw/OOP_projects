@@ -1,5 +1,6 @@
 # trying to make random rectangle object guessing game
 import random
+import turtle
 
 
 class Point:
@@ -21,12 +22,41 @@ class Point:
         else:
             return False
 
+    def point_drawing(self):
+        """
+        function will draw a point in turtle graph
+        :return: point
+        """
+        t = turtle.Turtle()
+        t.penup()
+        t.goto(self.x, self.y)
+        t.pendown()
+        t.dot(5)
+        t.hideturtle()
+
 
 class Rectangle:
 
     def __init__(self, coordinate1, coordinate2):
         self.coordinate1 = coordinate1
         self.coordinate2 = coordinate2
+
+    def turtle_drawing(self):
+        """
+        function will draw o rectangle based on random generated points
+        :return: drawing of rectangle
+        """
+        a = self.coordinate1.x - self.coordinate2.x
+        b = self.coordinate1.y - self.coordinate2.y
+        t = turtle.Turtle()
+        t.forward(a)  # a = length of first side
+        t.left(90)   # Turn turtle by 90 degree
+        t.forward(b)  # b length of second side
+        t.left(90)
+        t.forward(a)
+        t.left(90)
+        t.forward(b)
+        return t
 
 
 def main():
@@ -36,12 +66,13 @@ def main():
     # for testing purposes I will print coordinates of rectangle
     print(f'X:{rectangle.coordinate1.x}, Y:{rectangle.coordinate1.y} - '
           f'X:{rectangle.coordinate2.x},Y{rectangle.coordinate2.y}')
-    print(rectangle)
 
     user_x = int(input('Guess x coordinate: '))
     user_y = int(input('Guess y coordinate: '))
     user_point = Point(user_x, user_y)
     print(user_point.in_rectangle(rectangle))
+    print(rectangle.turtle_drawing(), user_point.point_drawing())
+    turtle.exitonclick()
 
 
 if __name__ == '__main__':
