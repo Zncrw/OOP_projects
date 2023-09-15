@@ -1,5 +1,7 @@
-# trying make random rectengle object guessing game
+# trying to make random rectangle object guessing game
 import random
+
+
 class Point:
 
     def __init__(self, x, y):
@@ -19,6 +21,7 @@ class Point:
         else:
             return False
 
+
 class Rectangle:
 
     def __init__(self, coordinate1, coordinate2):
@@ -26,26 +29,19 @@ class Rectangle:
         self.coordinate2 = coordinate2
 
 
-
-
-
-
-
 def main():
     # make random rectangle
     rectangle = Rectangle(Point(random.randint(0, 9), random.randint(0, 9)),
                           Point(random.randint(10, 19), random.randint(10, 19)))
-    # for testing purposes i will print coordinates of rectangle
+    # for testing purposes I will print coordinates of rectangle
     print(f'X:{rectangle.coordinate1.x}, Y:{rectangle.coordinate1.y} - '
           f'X:{rectangle.coordinate2.x},Y{rectangle.coordinate2.y}')
     print(rectangle)
 
     user_x = int(input('Guess x coordinate: '))
     user_y = int(input('Guess y coordinate: '))
-    user_point = Point(user_x,user_y)
+    user_point = Point(user_x, user_y)
     print(user_point.in_rectangle(rectangle))
-
-
 
 
 if __name__ == '__main__':
