@@ -34,7 +34,7 @@ class Point:
         t.penup()
         t.goto(self.x, self.y)
         t.pendown()
-        t.dot(5)
+        t.dot(5, 'green')
         t.hideturtle()
 
 
