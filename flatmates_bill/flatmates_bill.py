@@ -1,3 +1,6 @@
+import os.path
+import webbrowser
+
 from fpdf import FPDF
 class Bill:
     """
@@ -38,25 +41,41 @@ class PdfReport:
 
         pdf = FPDF(orientation='P', unit='pt', format='A4')
         pdf.add_page()
-        # Insert text
+        # add image
+        pdf.image(name='house.png', w=30, h=30)
+        # Insert Title
         pdf.set_font(family='Times', style='B', size=24)
-        # Title
-        pdf.cell(w=0, h=80, txt='Flatmates Bill', align='C', border=1, ln=1)
-        # text in cells
-        pdf.cell(w=100, h=40, txt='Period:', border=1)
-        pdf.cell(w=150, h=40, txt=bill.period, border=1, ln=1)
+        pdf.cell(w=0, h=80, txt='Flatmates Bill', align='C', border=0, ln=1)
+        pdf.set_font(family='Times', style='B', size=16)
+        pdf.cell(w=100, h=40, txt='Period:', border=0)
+        pdf.cell(w=150, h=40, txt=bill.period, border=0, ln=1)
+
         # Insert name of 1st user and amount to pay
-        pdf.cell(w=100, h=40, txt=flatmate1.name, border=1)
-        pdf.cell(w=150, h=40, txt=str(flatmate1.pays(bill=bill, flatmate2=flatmate2)), border=1, ln=1)
+        pdf.set_font(family='Times', style='I', size=16)
+        pdf.cell(w=100, h=40, txt=flatmate1.name, border=0)
+        pdf.cell(w=150, h=40, txt=str(round(flatmate1.pays(bill=bill, flatmate2=flatmate2), 2)), border=0, ln=1)
+
+        # Insert name of 2nd user and amount to pay
+        pdf.set_font(family='Times', style='I', size=16)
+        pdf.cell(w=100, h=40, txt=flatmate2.name, border=0)
+        pdf.cell(w=150, h=40, txt=str(round(flatmate2.pays(bill=bill, flatmate2=flatmate1), 2)), border=0, ln=1)
+
 
         pdf.output(name=self.filename)
+        webbrowser.open_new_tab('file://'+ os.path.realpath(self.filename))
+ask_the_bill = float(input('Hey, what is total amount ?: '))
+ask_the_period = input('What was the datum?: ')
+first_user = input(f'What is name of first user?: ')
+first_period = int(input('How long has he been living there?: '))
+second_user = input('What is name of second user?: ')
+second_period = int(input('How long has he been living there?: '))
 
 
-the_bill = Bill(amount=120, period='July 2023')
-john = Flatmate(name='John', days_in_house=20)
-marry = Flatmate(name='Marry', days_in_house=25)
+the_bill = Bill(amount=ask_the_bill, period=ask_the_period)
+first_flatmate = Flatmate(name=first_user, days_in_house=first_period)
+second_flatmate = Flatmate(name=second_user, days_in_house=second_period)
 
-print('john has to pay', john.pays(bill=the_bill, flatmate2=marry))
-print('marry has to pay', marry.pays(bill=the_bill, flatmate2=john))
+print(f'{first_flatmate.name} has to pay', first_flatmate.pays(bill=the_bill, flatmate2=second_flatmate))
+print(f'{second_flatmate.name} has to pay', second_flatmate.pays(bill=the_bill, flatmate2=first_flatmate))
 pdf_report = PdfReport(filename='report1.pdf')
-pdf_report.generate(flatmate1=john, flatmate2=marry, bill=the_bill)
+pdf_report.generate(flatmate1=first_flatmate, flatmate2=second_flatmate, bill=the_bill)
