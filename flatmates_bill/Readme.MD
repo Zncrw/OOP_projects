@@ -21,6 +21,7 @@ spend in the flat.
 After first user, it is time to get the second user in same order of data like first one.
 
 Here is image of showcase from python IDE terminal:
+![obrazek](https://github.com/Zncrw/OOP_projects/assets/132506987/4a5e802f-81a0-4d7d-b26f-0a7ca4aa8228)
 
 
 
