@@ -1,4 +1,5 @@
 ### Flatmates Bill ###
+This project should help me to understand basic principles of the OOP in Python.
 
 # Usage :
 This app is build for splitting the rent of flat between roomates, based on number of days. Program assuming, that rent is paid for a day.
@@ -15,3 +16,7 @@ trafaret==2.0.2
 urllib3==1.25.11
 
 # Showcase:
+At first, is user of program asked for the total amount of rent. Then is asked for the period(month) of the year, after that, user type first name, and then days that first user
+spend in the flat.
+After first user, it is time to get the second user in same order of data like first one.
+
