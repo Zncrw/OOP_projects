@@ -23,6 +23,9 @@ After first user, it is time to get the second user in same order of data like f
 Here is image of showcase from python IDE terminal:
   ![obrazek](https://github.com/Zncrw/OOP_projects/assets/132506987/4a5e802f-81a0-4d7d-b26f-0a7ca4aa8228)
 
+After providing all the informations program will auto open generated PDF report:
+![obrazek](https://github.com/Zncrw/OOP_projects/assets/132506987/03b38d22-081e-4e9e-991c-f8c81f54cb38)
+
 
 
 
