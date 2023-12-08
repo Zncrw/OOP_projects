@@ -23,6 +23,9 @@ class Flatmate:
         self.name = name
 
     def pays(self, bill, flatmate2):
+        """
+        method that returns amount of money that has to be paid by user.
+        """
         weight = self.days_in_house / (self.days_in_house + flatmate2.days_in_house)
         to_pay = bill.amount * weight
 
@@ -63,10 +66,14 @@ class PdfReport:
 
         pdf.output(name=self.filename)
         webbrowser.open_new_tab('file://'+ os.path.realpath(self.filename))
+
+
 ask_the_bill = float(input('Hey, what is total amount ?: '))
 ask_the_period = input('What was the datum?: ')
+
 first_user = input(f'What is name of first user?: ')
 first_period = int(input('How long has he been living there?: '))
+
 second_user = input('What is name of second user?: ')
 second_period = int(input('How long has he been living there?: '))
 
