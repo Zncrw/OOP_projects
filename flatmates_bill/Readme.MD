@@ -20,3 +20,6 @@ At first, is user of program asked for the total amount of rent. Then is asked f
 spend in the flat.
 After first user, it is time to get the second user in same order of data like first one.
 
+Here is image of showcase from python IDE terminal:
+https://github.com/Zncrw/OOP_projects/issues/2#issue-2032092791
+
