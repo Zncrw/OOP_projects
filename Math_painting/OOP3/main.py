@@ -13,13 +13,15 @@ class Square:
         self.y = y
         self.x = x
 
+
+
     def draw(self, canvas):
         """
         method, that will draw a square on base canvas
         :param canvas: user defined canvas
         :return: square drawing
         """
-        pass
+        canvas.matrix[self.x:self.x + self.side, self.y:self.y + self.side] = self.color
 
 
 class Rectangle:
@@ -35,10 +37,11 @@ class Rectangle:
         self.x = x
 
     def draw(self, canvas):
+        self.canvas = canvas
         """
         method that will draw rectangle on canvas
         """
-        pass
+        canvas.matrix[self.x:self.x + self.width, self.y:self.y + self.height] = self.color
 
         
 class Canvas:
@@ -51,14 +54,21 @@ class Canvas:
         self.width = width
 
         # create empty 3D grid
-        self.matrix = np.zeros((5, 4, 3), dtype=np.uint8)
+        self.matrix = np.zeros((self.width, self.height, 3), dtype=np.uint8)
 
         # change 0,0,0 to users options
         self.matrix[:] = self.color
 
-    def make(self, imagepath):
+    def make(self, image_path):
         """
         method that will save final img
         """
         img = Image.fromarray(self.matrix, 'RGB')
-        img.save(f'{imagepath}.png')
+        img.save(f'{image_path}.png')
+
+canvas = Canvas(20,20,[255, 255, 255])
+rec = Rectangle(x=10, y=10, width=5, height=8, color=[255, 0, 0])
+square = Square(x=1, y=1, side=5,color=[255, 0, 0])
+rec.draw(canvas)
+square.draw(canvas)
+canvas.make('Test')
