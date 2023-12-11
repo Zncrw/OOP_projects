@@ -88,10 +88,14 @@ def main():
     else:
         print('Invalid color entered. Please choose W for white or B for black.')
         color_user = input('Choose background color for canvas W for white / B for black: ')
-
-    canvas = Canvas(width=int(input('Enter canvas width: ').strip()),
-                    height=int(input('Enter canvas height: ').strip()),
-                    color=color_user)
+    while True:
+        try:
+            canvas = Canvas(width=int(input('Enter canvas width: ').strip()),
+                            height=int(input('Enter canvas height: ').strip()),
+                            color=color_user)
+            break
+        except ValueError:
+            print('Invalid input. Please enter a valid integer.')
 
     next_drawing = True
     while next_drawing is True:
@@ -113,7 +117,7 @@ def main():
             square = Square(
                 x=int(input('Enter x point: ')),
                 y=int(input('Enter y point: ')),
-                side=int(input('Enter lenght of side: ')),
+                side=int(input('Enter length of side: ')),
                 color=get_color(input('Choose color: red/green/blue: '))
             )
             # draw square on canvas
