@@ -13,8 +13,6 @@ class Square:
         self.y = y
         self.x = x
 
-
-
     def draw(self, canvas):
         """
         method, that will draw a square on base canvas
@@ -37,7 +35,6 @@ class Rectangle:
         self.x = x
 
     def draw(self, canvas):
-        self.canvas = canvas
         """
         method that will draw rectangle on canvas
         """
@@ -66,9 +63,72 @@ class Canvas:
         img = Image.fromarray(self.matrix, 'RGB')
         img.save(f'{image_path}.png')
 
-canvas = Canvas(20,20,[255, 255, 255])
-rec = Rectangle(x=10, y=10, width=5, height=8, color=[255, 0, 0])
-square = Square(x=1, y=1, side=5,color=[255, 0, 0])
-rec.draw(canvas)
-square.draw(canvas)
-canvas.make('Test')
+def main():
+    color_user = input('Choose background color for canvas W for white / B for black: ')
+    if color_user.lower() == 'black' or color_user == 'b':
+        color_user = [0, 0, 0]
+    else:
+        color_user = [255, 255, 255]
+
+    canvas = Canvas(width=int(input('Enter canvas width: ')),
+                    height=int(input('Enter canvas height: ')),
+                    color=color_user)
+
+    next_drawing = True
+    while next_drawing is True:
+        ask_user = input('What do you want to draw? square/rectangle? Enter quit for quit: ')
+
+        if ask_user.lower() == 'rectangle':
+            rec_color = input('Choose color: red/green/blue: ')
+            if rec_color == 'red':
+                rec_color = [255, 0, 0]
+            if rec_color == 'blue':
+                rec_color = [0, 0, 255]
+            if rec_color == 'green':
+                rec_color = [0, 255, 0]
+            # make an object with user input
+            rec = Rectangle(
+                x=int(input('Enter x point: ')),
+                y=int(input('Enter y point: ')),
+                width=int(input('Enter width: ')),
+                height=int(input('Enter height: ')),
+                color=rec_color
+            )
+            # draw rectangle on canvas
+            rec.draw(canvas)
+
+        if ask_user.lower() == 'square':
+            square_color = input('Choose color: red/green/blue: ')
+            if square_color == 'red':
+                square_color = [255, 0, 0]
+            if square_color == 'blue':
+                square_color = [0, 0, 255]
+            if square_color == 'green':
+                square_color = [0, 255, 0]
+            square = Square(
+                x=int(input('Enter x point: ')),
+                y=int(input('Enter y point: ')),
+                side=int(input('Enter lenght of side: ')),
+                color=square_color
+            )
+            square.draw(canvas)
+
+        elif ask_user.lower() == 'quit':
+            canvas.make(input('Type name of file: '))
+            next_drawing = False
+            break
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+
+
+
+
+
+
+
+
