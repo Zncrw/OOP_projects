@@ -70,31 +70,34 @@ def get_color(color: str) -> list:
     :param color: string of user
     :return: list with RGB values
     """
-    if color == 'red':
+    if color in ['red', 'r']:
         return [255, 0, 0]
-    if color == 'blue':
+    if color in ['blue', 'b']:
         return [0, 0, 255]
-    if color == 'green':
+    if color in ['green', 'g']:
         return [0, 255, 0]
 
 
 def main():
 
     color_user = input('Choose background color for canvas W for white / B for black: ')
-    if color_user.lower() == 'black' or color_user == 'b':
+    if color_user.lower() in ['black', 'b', 'balck']:
         color_user = [0, 0, 0]
-    else:
+    elif color_user.lower() in ['white', 'w']:
         color_user = [255, 255, 255]
+    else:
+        print('Invalid color entered. Please choose W for white or B for black.')
+        color_user = input('Choose background color for canvas W for white / B for black: ')
 
-    canvas = Canvas(width=int(input('Enter canvas width: ')),
-                    height=int(input('Enter canvas height: ')),
+    canvas = Canvas(width=int(input('Enter canvas width: ').strip()),
+                    height=int(input('Enter canvas height: ').strip()),
                     color=color_user)
 
     next_drawing = True
     while next_drawing is True:
         ask_user = input('What do you want to draw? square/rectangle? Enter quit for quit: ')
 
-        if ask_user.lower() == 'rectangle':
+        if ask_user.lower() in ['rectangle', 'r']:
             # make an object with user input
             rec = Rectangle(
                 x=int(input('Enter x point: ')),
@@ -106,16 +109,17 @@ def main():
             # draw rectangle on canvas
             rec.draw(canvas)
 
-        if ask_user.lower() == 'square':
+        if ask_user.lower() in ['square', 's']:
             square = Square(
                 x=int(input('Enter x point: ')),
                 y=int(input('Enter y point: ')),
                 side=int(input('Enter lenght of side: ')),
                 color=get_color(input('Choose color: red/green/blue: '))
             )
+            # draw square on canvas
             square.draw(canvas)
 
-        elif ask_user.lower() == 'quit':
+        elif ask_user.lower() in ['quit', 'q', 'exit']:
             canvas.make(input('Type name of file: '))
             break
 
