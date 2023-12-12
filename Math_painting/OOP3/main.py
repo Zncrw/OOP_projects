@@ -79,15 +79,11 @@ def get_color(color: str) -> list:
 
 
 def main():
-
     color_user = input('Choose background color for canvas W for white / B for black: ')
     if color_user.lower() in ['black', 'b', 'balck']:
         color_user = [0, 0, 0]
     elif color_user.lower() in ['white', 'w']:
         color_user = [255, 255, 255]
-    else:
-        print('Invalid color entered. Please choose W for white or B for black.')
-        color_user = input('Choose background color for canvas W for white / B for black: ')
     while True:
         try:
             canvas = Canvas(width=int(input('Enter canvas width: ').strip()),
@@ -100,28 +96,37 @@ def main():
     next_drawing = True
     while next_drawing is True:
         ask_user = input('What do you want to draw? square/rectangle? Enter quit for quit: ')
-
         if ask_user.lower() in ['rectangle', 'r']:
-            # make an object with user input
-            rec = Rectangle(
-                x=int(input('Enter x point: ')),
-                y=int(input('Enter y point: ')),
-                width=int(input('Enter width: ')),
-                height=int(input('Enter height: ')),
-                color=get_color(input('Choose color: red/green/blue: '))
-            )
-            # draw rectangle on canvas
-            rec.draw(canvas)
-
+            while True:
+                try:
+                    # make an object with user input
+                    rec = Rectangle(
+                        x=int(input('Enter x point: ')),
+                        y=int(input('Enter y point: ')),
+                        width=int(input('Enter width: ')),
+                        height=int(input('Enter height: ')),
+                        color=get_color(input('Choose color: red/green/blue: '))
+                    )
+                    # draw rectangle on canvas
+                    rec.draw(canvas)
+                    break
+                except ValueError:
+                    print('Wrong value, please enter a valid integer.')
         if ask_user.lower() in ['square', 's']:
-            square = Square(
-                x=int(input('Enter x point: ')),
-                y=int(input('Enter y point: ')),
-                side=int(input('Enter length of side: ')),
-                color=get_color(input('Choose color: red/green/blue: '))
-            )
-            # draw square on canvas
-            square.draw(canvas)
+            while True:
+                try:
+                    # make an object
+                    square = Square(
+                        x=int(input('Enter x point: ')),
+                        y=int(input('Enter y point: ')),
+                        side=int(input('Enter length of side: ')),
+                        color=get_color(input('Choose color: red/green/blue: '))
+                    )
+                    # draw square on canvas
+                    square.draw(canvas)
+                    break
+                except ValueError:
+                    print('Wrong value, please enter a valid integer.')
 
         elif ask_user.lower() in ['quit', 'q', 'exit']:
             canvas.make(input('Type name of file: '))
@@ -130,3 +135,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
