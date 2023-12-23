@@ -14,6 +14,9 @@ class CameraScreen(Screen):
         """
         starts camera and change the text of button
         """
+        # set the visibility of camera frame
+        self.ids.camera.opacity = 1
+
         self.ids.camera.play = True
         # changing button name when camera is running
         self.ids.camera_button.text = 'Stop Camera'
@@ -25,6 +28,9 @@ class CameraScreen(Screen):
         """
         stops the camera and change the text of the button
         """
+        # set the invisibility of camera frame
+        self.ids.camera.opacity = 0
+
         self.ids.camera.play = False
 
         # changing button name when camera is running
